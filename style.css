@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+body {
+  background-color: black;
+  margin: 0;
+  color: white;
+}
+
+#canvas-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer a {
+  text-decoration: none;
+}
+
+footer a:link,
+footer a:visited,
+footer a:active {
+  color: #8a8989
+}
+
+footer a:hover {
+  color: #c4c4c4
+}
