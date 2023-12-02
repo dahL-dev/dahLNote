@@ -16,16 +16,12 @@ let noteDestination = "assets/gong.wav"
 
 
 let dropdown;
-let numPolygonsSlider;
-let numCornerSlider;
-let pitchModifier1Slider;
-let pitchModifier2Slider;
-let cycleTimeSlider;
-let rythmToggle;
 
 
 let existingDots = [];
- 
+
+
+
 function toggleRythm() {
   rythm = !rythm;
 }
@@ -62,25 +58,6 @@ function setup() {
   canvas.parent("canvas-container")
   
 
-  rythmToggle = createCheckbox('Rythm', rythm);
-  rythmToggle.changed(updateParameters);
-
-
-  numPolygonsSlider = createSlider(3, 20, 8); // Adjust the range and default value accordingly
-  numCornerSlider = createSlider(3, 10, 6); // Adjust the range and default value accordingly
-  pitchModifier1Slider = createSlider(0.1, 1.0, 0.2, 0.01); // Adjust the range and default value accordingly
-  pitchModifier2Slider = createSlider(0.5, 2.0, 1.0, 0.01); // Adjust the range and default value accordingly
-  cycleTimeSlider = createSlider(10, 60, 30); // Adjust the range and default value accordingly
-
-  // Create rythm toggle
-  
-
-  // Add input event listeners for slider changes
-  numPolygonsSlider.input(updateParameters);
-  numCornerSlider.input(updateParameters);
-  pitchModifier1Slider.input(updateParameters);
-  pitchModifier2Slider.input(updateParameters);
-  cycleTimeSlider.input(updateParameters);
 
 
   updateParameters();
@@ -102,12 +79,12 @@ function updateParameters() {
 
   
   // Update values from sliders and toggle
-  numPolygons = numPolygonsSlider.value();
-  numCorner = numCornerSlider.value();
-  pitchModifier1 = pitchModifier1Slider.value();
-  pitchModifier2 = pitchModifier2Slider.value();
-  cycleTime = cycleTimeSlider.value();
-  rythm = rythmToggle.checked();
+  numPolygons = parseFloat(document.getElementById('numPolygonsSlider').value);
+  numCorner = parseFloat(document.getElementById('numCornerSlider').value);
+  pitchModifier1 = parseFloat(document.getElementById('pitchModifier1Slider').value);
+  pitchModifier2 = parseFloat(document.getElementById('pitchModifier2Slider').value);
+  cycleTime = parseFloat(document.getElementById('cycleTimeSlider').value);
+  rythm = document.getElementById('rythmToggle').checked;
 
   existingDots = Polygon.all.map(polygon => ({
     position: polygon.dotActualVertex.copy(),
@@ -394,3 +371,9 @@ class VertexImpactAnimation {
     return this.step >= VertexImpactAnimation.numSteps
   }
 }
+
+$(document).ready(function () {
+  $("#toggleMenu").click(function () {
+      $(".menu-container").toggleClass("menu-open");
+  });
+});
