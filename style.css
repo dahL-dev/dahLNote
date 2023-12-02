@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  margin: 0;
 }
 
 canvas {
@@ -8,7 +9,7 @@ canvas {
 
 body {
   background-color: black;
-  margin: 0;
+  overflow: hidden;
   color: white;
 }
 
@@ -16,6 +17,71 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+}
+
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: -300px; /* Hide off-screen initially */
+  width: 250px;
+  height: 100%;
+  background-color: #161616;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 2; /* Increased z-index */
+  transition: left 0.3s ease; /* Add transition property for smooth animation */
+}
+
+.menu-container.menu-open {
+  left: 0;
+}
+
+.menu .slider-container {
+  margin-bottom: 15px; /* Adjust the margin to provide spacing between sliders */
+}
+
+.menu {
+  color: white; /* You can customize the styles for the menu content here */
+  padding: 20px;
+}
+
+.menu h2 {
+  color: #3498db; /* Header color */
+  font-size: 1.5rem; /* Adjust the font size as needed */
+  margin-bottom: 15px; /* Add margin to separate the header from sliders */
+}
+
+#toggleMenu {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  z-index: 3; /* Ensure the button appears above the menu */
+  transition: left 0.3s ease; /* Add transition property for smooth animation */
+}
+
+.menu-container #toggleMenu {
+  left: 20px; /* Adjust this value to match the menu width */
+}
+
+.menu-container.menu-open #toggleMenu {
+  left: 260px; /* Adjust this value to match the menu width */
+}
+
+#toggleMenu:hover {
+  background-color: #2980b9;
+}
+
+body.menu-open {
+  margin-left: 0;
+  transition: margin-left 0.3s; /* Add transition property for smooth animation */
 }
 
 footer a {
@@ -25,9 +91,9 @@ footer a {
 footer a:link,
 footer a:visited,
 footer a:active {
-  color: #8a8989
+  color: #8a8989;
 }
 
 footer a:hover {
-  color: #c4c4c4
+  color: #c4c4c4;
 }
