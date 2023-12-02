@@ -1,16 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="h-100">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="dahLNote project">
     <meta name="author" content="dahL">
     <title>dahLNote</title>
 
-    <link rel="icon"
-      type="image/png"
-      href="./assets/favicon.png">
-
+    <link rel="icon" type="image/png" href="./assets/favicon.png">
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -18,20 +15,56 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <audio preload="auto">
-      <source src="./assets/gong.wav" type="audio/wav">
-      Your browser does not support the audio element.
+        <source src="./assets/gong.wav" type="audio/wav">
+        Your browser does not support the audio element.
     </audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
 
- 
-
-
-  </head>
-
-  <body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100">
     <!-- Begin page content -->
+    <div class="menu-container">
+      <div class="menu">
+        <h2>Settings</h2>
+      
+        <div class="slider-container">
+          <label for="numPolygonsSlider">Number of Polygons:</label>
+          <input type="range" id="numPolygonsSlider" min="1" max="20" value="8" onchange="updateParameters()">
+        </div>
+      
+        <div class="slider-container">
+          <label for="numCornerSlider">Number of Corners:</label>
+          <input type="range" id="numCornerSlider" min="2" max="10" value="6" onchange="updateParameters()">
+        </div>
+      
+        <div class="slider-container">
+          <label for="pitchModifier1Slider">Pitch Modifier 1:</label>
+          <input type="range" id="pitchModifier1Slider" min="0.1" max="2.0" step="0.1" value="0.2" onchange="updateParameters()">
+        </div>
+      
+        <div class="slider-container">
+          <label for="pitchModifier2Slider">Pitch Modifier 2:</label>
+          <input type="range" id="pitchModifier2Slider" min="0.5" max="2.0" step="0.1" value="1.0" onchange="updateParameters()">
+        </div>
+      
+        <div class="slider-container">
+          <label for="cycleTimeSlider">Cycle Time:</label>
+          <input type="range" id="cycleTimeSlider" min="5" max="60" value="30" onchange="updateParameters()">
+        </div>
+      
+        <div class="slider-container">
+          <label for="rythmToggle">Rhythm:</label>
+          <input type="checkbox" id="rythmToggle" checked onchange="updateParameters()">
+        </div>
+      </div>
+      <button id="toggleMenu">
+        <!-- You can replace the text with an image or icon -->
+        Toggle Menu
+      </button>
+    </div>
+
     <main class="h-100">
       <div class="container h-100 align-middle" id="canvas-container">
         <script src="main.js"></script>
@@ -39,9 +72,9 @@
     </main>
 
     <footer class="footer mt-auto pb-3 w-100" style="position: absolute; top: 0; right: 0;">
-      <div class="text-end w-100 px-3">
-        <span class="text-muted"><a href="https://github.com/dahL-dev">dahLnote</a></span>
-      </div>
+        <div class="text-end w-100 px-3">
+            <span class="text-muted"><a href="https://github.com/dahL-dev">dahLnote</a></span>
+        </div>
     </footer>
-  </body>
+</body>
 </html>
